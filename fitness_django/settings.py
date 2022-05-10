@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fitness',
-    'rest_framework'
+    'rest_framework',
+    'client'
 ]
 
 REST_FRAMEWORK = {
