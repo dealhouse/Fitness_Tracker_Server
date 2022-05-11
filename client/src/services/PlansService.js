@@ -8,3 +8,11 @@ export const GetPlans = async () => {
         throw error
     }
 }
+export const DeletePlan = async (id) => {
+    try {
+        await Client.delete(`/plan/${id}/`)
+        return console.log(`${id} was deleted`)
+    } catch (error) {
+        throw error
+    }
+}
