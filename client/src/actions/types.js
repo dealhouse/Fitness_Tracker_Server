@@ -1,1 +1,1 @@
-export const GET_Plans = 'GET_Plans'
+export const GET_PLANS = 'GET_PLANS'

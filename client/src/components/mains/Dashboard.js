@@ -1,11 +1,11 @@
 import Form from './Form'
-import Leads from './Plans'
+import Plans from './Plans'
 import React from 'react'
 const Dashboard = () => {
     return (
         <div>
             <Form />
-            <Leads />
+            <Plans />
         </div>
     )
 }
