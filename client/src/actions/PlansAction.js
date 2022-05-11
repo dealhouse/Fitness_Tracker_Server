@@ -1,6 +1,7 @@
-import { GET_PLANS, DELETE_PLANS } from "./types";
+import { GET_PLANS, DELETE_PLANS, CREATE_PLAN } from "./types";
 import axios from 'axios'
-import {GetPlans, DeletePlan} from '../services/PlansService'
+import {GetPlans, DeletePlan, CreatePlan} from '../services/PlansService'
+
 
 export const PullPlans = () => {
     return async (dispatch) => {
@@ -22,6 +23,20 @@ export const RemovePlans = (id) => {
             dispatch({
                 type: DELETE_PLANS,
                 payload: id
+            })
+        } catch (error) {
+            throw error
+        }
+    }
+}
+
+export const AddPlan = (data) => {
+    return async (dispatch) => {
+        try {
+            const plan = await CreatePlan(data)
+            dispatch({
+                type: CREATE_PLAN,
+                payload: plan
             })
         } catch (error) {
             throw error

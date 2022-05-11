@@ -16,3 +16,12 @@ export const DeletePlan = async (id) => {
         throw error
     }
 }
+
+export const CreatePlan = async (data) => {
+    try {
+        const res = await Client.post('/plan/', data)
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}
