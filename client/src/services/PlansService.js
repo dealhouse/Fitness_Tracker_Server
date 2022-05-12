@@ -25,3 +25,12 @@ export const CreatePlan = async (data) => {
         throw error
     }
 }
+
+export const UpdatePlan = async (id, data) => {
+    try {
+        const res = await Client.put(`/plan/${id}/`, data)
+        return res.data
+    } catch (error) {
+        throw error
+    }
+} 

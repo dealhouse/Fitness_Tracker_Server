@@ -1,6 +1,6 @@
-import { GET_PLANS, DELETE_PLANS, CREATE_PLAN } from "./types";
+import { GET_PLANS, DELETE_PLANS, CREATE_PLAN, EDIT_PLAN } from "./types";
 import axios from 'axios'
-import {GetPlans, DeletePlan, CreatePlan} from '../services/PlansService'
+import {GetPlans, DeletePlan, CreatePlan, UpdatePlan} from '../services/PlansService'
 
 
 export const PullPlans = () => {
@@ -38,6 +38,21 @@ export const AddPlan = (data) => {
                 type: CREATE_PLAN,
                 payload: plan
             })
+        } catch (error) {
+            throw error
+        }
+    }
+}
+
+export const EditPlan = (id, data) => {
+    return async (dispatch) => {
+        try {
+            const plan = await UpdatePlan(id, data)
+            dispatch({
+                type: EDIT_PLAN,
+                payload: {...data, id: id}
+            })
+            return Promise.resolve(data)
         } catch (error) {
             throw error
         }

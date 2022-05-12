@@ -3,9 +3,6 @@ import { AddPlan } from '../../actions/PlansAction'
 import axios from 'axios'
 import { connect } from 'react-redux'
 
-const mapStateToProps = ({ planState }) => {
-    return {planState}
-}
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -61,7 +58,7 @@ const Form = (props) => {
                 </div>
                 <div className="form-group">
                     <label>Duration</label>
-                    <textarea
+                    <input
                     className="form-control"
                     type="text"
                     name="duration"
