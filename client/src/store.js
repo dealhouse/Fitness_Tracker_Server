@@ -3,14 +3,16 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers'
 import PlansReducer from './reducers/PlansReducer'
+import AuthReducer from './reducers/AuthReducer'
 
-const initialState = {}
+// const initialState = {}
 
 
 const store = createStore(
     combineReducers({
         reducer: rootReducer,
-        planState: PlansReducer
+        planState: PlansReducer,
+        authState: AuthReducer
     }),
     composeWithDevTools(applyMiddleware(thunk))
 )
