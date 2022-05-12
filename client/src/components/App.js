@@ -10,7 +10,9 @@ const App = () => {
         <Provider store={store}>
         <div>
             <Header/>
+            <div className='container'>
             <Dashboard/>
+            </div>
         </div>
         </Provider>
     );
