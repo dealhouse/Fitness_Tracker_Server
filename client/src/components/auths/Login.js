@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux'
 import { LoginAction } from '../../actions/AuthAction'
 import { Navigate } from 'react-router-dom'
 
 const Login = (props) => {
+
     const [formValues, setFormValues] = useState({
         name: '',
         password: '',
@@ -15,7 +16,6 @@ const Login = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('hello')
         props.log(formValues.name, formValues.password)
         setFormValues({
             name: '',

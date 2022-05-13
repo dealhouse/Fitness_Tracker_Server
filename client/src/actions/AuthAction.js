@@ -5,24 +5,24 @@ import {USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS} from '
 export const LoadUser = () => {
     return async (dispatch, getState) => {
     try {
+        console.log('loading')
         dispatch({type: USER_LOADING})
-
+        
         const token = getState().authState.token
-
         const config = {
             headers: {
                 'Content-Type': 'application/json'
             }
         }
-
+        
         if(token) {
-            config.headers['Authorization'] = `Token ${token}`
+            config.headers["Authorization"] = `Token ${token}`
         }
-
         const res = await GetUser(config)
+        console.log(res)
         dispatch({
             type: USER_LOADED,
-            payload: res.data
+            payload: res
         })
     } catch (error) {
         dispatch({
@@ -33,7 +33,6 @@ export const LoadUser = () => {
 export const LoginAction = (username, password) => {
     return async (dispatch) => {
     try {
-        console.log('logged')
         const config = {
             headers: {
                 'Content-Type': 'application/json'
@@ -46,12 +45,10 @@ export const LoginAction = (username, password) => {
             type: LOGIN_SUCCESS,
             payload: res
         })
-        console.log('hello')
     } catch (error) {
         dispatch({
             type: LOGIN_FAIL
         })
-        console.log(error)
         throw error
     }
 }}

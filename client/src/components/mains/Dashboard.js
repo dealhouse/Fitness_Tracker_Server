@@ -1,7 +1,9 @@
 import Form from './Form'
 import Plans from './Plans'
-import React from 'react'
+import React, {useEffect} from 'react'
+
 const Dashboard = () => {
+    
     return (
         <div div className="col-md-10 m-auto">
             <div className='className="card card-body mt-5"'>
