@@ -16,3 +16,12 @@ export const LoginCheck = async (body, config) => {
         throw error
     }
 }
+
+export const LogoutService = async (config) => {
+    try {
+        const res = await Client.post('/auth/logout', {}, config)
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}

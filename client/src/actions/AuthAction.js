@@ -1,11 +1,10 @@
 import axios from 'axios'
-import { GetUser, LoginCheck } from '../services/AuthService'
-import {USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS} from './types'
+import { GetUser, LoginCheck, LogoutService } from '../services/AuthService'
+import {USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT_SUCCESS} from './types'
 
 export const LoadUser = () => {
     return async (dispatch, getState) => {
     try {
-        console.log('loading')
         dispatch({type: USER_LOADING})
         
         const token = getState().authState.token
@@ -19,7 +18,6 @@ export const LoadUser = () => {
             config.headers["Authorization"] = `Token ${token}`
         }
         const res = await GetUser(config)
-        console.log(res)
         dispatch({
             type: USER_LOADED,
             payload: res
@@ -52,3 +50,28 @@ export const LoginAction = (username, password) => {
         throw error
     }
 }}
+
+export const Logout = () => {
+    return async (dispatch, getState) => {
+    try {
+        
+        const token = getState().authState.token
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        
+        if(token) {
+            config.headers["Authorization"] = `Token ${token}`
+        }
+        console.log(config)
+        await LogoutService(config)
+        dispatch({
+            type: LOGOUT_SUCCESS
+        })
+    } catch (error) {
+        throw error
+    }
+}
+}

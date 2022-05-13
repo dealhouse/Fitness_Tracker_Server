@@ -23,9 +23,8 @@ const Login = (props) => {
         })
     }
     return (
-        <div>
-            {props.authState.isAuthenticated ? <Navigate to="/"/> : 
             <div className="col-md-6 m-auto">
+            {props.authState.isAuthenticated ? <Navigate to="/"/> : 
             <div className="card card-body mt-5">
             <h2 className="text-center">Login</h2>
             <form className="col" onSubmit={handleSubmit}>
@@ -58,7 +57,6 @@ const Login = (props) => {
                 </button>
             </form>
             </div>
-        </div>
         }
         </div>
     )

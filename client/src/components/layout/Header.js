@@ -1,7 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux'
+import { Logout } from '../../actions/AuthAction';
 
-const Header = () => {
+const Header = (props) => {
+    
+    const handleLog = (e) => {
+        e.preventDefault()
+        props.logout()
+    }
     return (
         <div>
             <nav className="navbar navbar-expand-sm navbar-light bg-light">
@@ -11,6 +18,12 @@ const Header = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
                     <a className="navbar-brand" href="#">Fitness Tracker</a>
+                    {props.authState.isAuthenticated ? 
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className='nav-item'>
+                            <button onClick={handleLog} className='nav-link btn btn-info btn-sm text-light'>Logout</button>
+                        </li>
+                    </ul> : 
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className='nav-item'>
                             <Link to='/register' className='nav-link'>Register</Link>
@@ -18,13 +31,19 @@ const Header = () => {
                         <li className='nav-item'>
                             <Link to="/login" className='nav-link'>Login</Link>
                         </li>
-                    </ul>
-                    
+                    </ul>}
                     </div>
                 </div>
             </nav>
         </div>
     );
 }
-
-export default Header;
+const mapStateToProps = ({ authState }) => {
+    return {authState}
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logout: () => dispatch(Logout())
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
