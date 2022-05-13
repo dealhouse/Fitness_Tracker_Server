@@ -1,7 +1,9 @@
 import axios from 'axios'
+import { GetUser } from '../services/AuthService'
 import {USER_LOADED, USER_LOADING, AUTH_ERROR} from './types'
 
-export const LoadUser = async () => (dispatch, getState) => {
+export const LoadUser = () => {
+    return async (dispatch, getState) => {
     try {
         dispatch({type: USER_LOADING})
 
@@ -17,7 +19,7 @@ export const LoadUser = async () => (dispatch, getState) => {
             config.headers['Authorization'] = `Token ${token}`
         }
 
-        const res = await axios.get('api/auth/user', config)
+        const res = await GetUser(config)
         dispatch({
             type: USER_LOADED,
             payload: res.data
@@ -27,4 +29,4 @@ export const LoadUser = async () => (dispatch, getState) => {
             type: AUTH_ERROR
         })
     }
-}
+}}
