@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { GetUser, LoginCheck, LogoutService } from '../services/AuthService'
-import {USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT_SUCCESS} from './types'
+import { GetUser, LoginCheck, LogoutService, RegisterCheck } from '../services/AuthService'
+import {USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT_SUCCESS, REGISTER_FAIL, REGISTER_SUCCESS} from './types'
 
 export const LoadUser = () => {
     return async (dispatch, getState) => {
@@ -75,3 +75,28 @@ export const Logout = () => {
     }
 }
 }
+
+export const RegisterAction = ({username, email, password}) => {
+    return async (dispatch) => {
+    try {
+        console.log('hello')
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        console.log('hello')
+        
+        const body = JSON.stringify({username, email, password})
+        const res = await RegisterCheck(body, config)
+        dispatch({
+            type: REGISTER_SUCCESS,
+            payload: res
+        })
+    } catch (error) {
+        dispatch({
+            type: REGISTER_FAIL
+        })
+        throw error
+    }
+}}

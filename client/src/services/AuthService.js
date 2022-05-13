@@ -25,3 +25,12 @@ export const LogoutService = async (config) => {
         throw error
     }
 }
+
+export const RegisterCheck = async (body, config) => {
+    try {
+        const res = await Client.post('/auth/register', body, config)
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}

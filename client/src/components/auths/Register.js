@@ -1,19 +1,24 @@
 import React, {useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-// import {}
+import { Navigate, useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { RegisterAction } from '../../actions/AuthAction'
 const mapStateToProps = ({ authState }) => {
     return {authState}
 }
-
+const mapDispatchToProps = (dispatch) => {
+    return {
+        register: (username, password, email) => dispatch(RegisterAction(username, password, email))
+    }
+}
 const Register = (props) => {
-    console.log(props.authState.isLoading)
+    let navigate = useNavigate()
     const [formValues, setFormValues] = useState({
         name: '',
         email: '',
         password: '',
         confirmPassword: ''
     })
+    console.log(formValues)
 
     const handleChange = (e) => {
         setFormValues({ ...formValues, [e.target.name]: e.target.value})
@@ -21,17 +26,19 @@ const Register = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await RegisterUser({
-            name: formValues.name,
+        const user = {
+            username: formValues.name,
             email: formValues.email,
             password: formValues.password
-        })
+        }
+        await props.register(user)
         setFormValues({
             name: '',
             email: '',
             password: '',
             confirmPassword: ''
         })
+        navigate('/login')
     }
     return (
     <div className="col-md-6 m-auto">
@@ -100,4 +107,4 @@ const Register = (props) => {
 
 }
 
-export default connect(mapStateToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
