@@ -100,3 +100,22 @@ export const RegisterAction = ({username, email, password}) => {
         throw error
     }
 }}
+
+export const tokenConfig = () => {
+    // Get token from state
+    const token = getState().authState.token;
+  
+    // Headers
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+  
+    // If token, add to headers config
+    if (token) {
+      config.headers['Authorization'] = `Token ${token}`;
+    }
+  
+    return config;
+  };

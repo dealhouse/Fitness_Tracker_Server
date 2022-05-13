@@ -1,5 +1,6 @@
 import { CREATE_PLAN, DELETE_PLANS, EDIT_PLAN, GET_PLANS } from '../actions/types.js'
 
+
 const initialState = {
     plans: []
 }

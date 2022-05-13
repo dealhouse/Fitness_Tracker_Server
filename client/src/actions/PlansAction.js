@@ -4,9 +4,22 @@ import {GetPlans, DeletePlan, CreatePlan, UpdatePlan} from '../services/PlansSer
 
 
 export const PullPlans = () => {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
         try {
-            const plans = await GetPlans()
+        const token = getState().authState.token;
+    
+        // Headers
+        const config = {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        };
+    
+        // If token, add to headers config
+        if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+    }
+            const plans = await GetPlans(config)
             dispatch({
                 type: GET_PLANS,
                 payload: plans
@@ -17,9 +30,22 @@ export const PullPlans = () => {
     }
 }
 export const RemovePlans = (id) => {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
         try {
-            await DeletePlan(id)
+        const token = getState().authState.token;
+    
+        // Headers
+        const config = {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        };
+    
+        // If token, add to headers config
+        if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+        }
+            await DeletePlan(id, config)
             dispatch({
                 type: DELETE_PLANS,
                 payload: id
@@ -31,9 +57,22 @@ export const RemovePlans = (id) => {
 }
 
 export const AddPlan = (data) => {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
         try {
-            const plan = await CreatePlan(data)
+        const token = getState().authState.token;
+    
+        // Headers
+        const config = {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        };
+    
+        // If token, add to headers config
+        if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+        }
+            const plan = await CreatePlan(data, config)
             dispatch({
                 type: CREATE_PLAN,
                 payload: plan
@@ -45,9 +84,22 @@ export const AddPlan = (data) => {
 }
 
 export const EditPlan = (id, data) => {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
         try {
-            const plan = await UpdatePlan(id, data)
+        const token = getState().authState.token;
+    
+        // Headers
+        const config = {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        };
+    
+        // If token, add to headers config
+        if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+        }
+            const plan = await UpdatePlan(id, data, config)
             dispatch({
                 type: EDIT_PLAN,
                 payload: {...data, id: id}

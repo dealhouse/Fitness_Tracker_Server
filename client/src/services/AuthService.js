@@ -1,5 +1,7 @@
 import Client from './index'
 
+
+
 export const GetUser = async (config) => {
     try {
         const res = await Client.get('/auth/user', config)

@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux'
 import { LoginAction } from '../../actions/AuthAction'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const Login = (props) => {
-
+    let navigate = useNavigate()
     const [formValues, setFormValues] = useState({
         name: '',
         password: '',
@@ -21,10 +21,10 @@ const Login = (props) => {
             name: '',
             password: '',
         })
+        navigate('/')
     }
     return (
             <div className="col-md-6 m-auto">
-            {props.authState.isAuthenticated ? <Navigate to="/"/> : 
             <div className="card card-body mt-5">
             <h2 className="text-center">Login</h2>
             <form className="col" onSubmit={handleSubmit}>
@@ -57,7 +57,6 @@ const Login = (props) => {
                 </button>
             </form>
             </div>
-        }
         </div>
     )
 }
