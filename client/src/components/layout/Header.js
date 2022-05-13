@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import { Logout } from '../../actions/AuthAction';
 
 const Header = (props) => {
-    
+
     const handleLog = (e) => {
         e.preventDefault()
         props.logout()
@@ -18,8 +18,14 @@ const Header = (props) => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
                     <a className="navbar-brand" href="#">Fitness Tracker</a>
+                    </div>
                     {props.authState.isAuthenticated ? 
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <span className='navbar-text mr-3'>
+                            <strong>
+                                {props.authState.user ? `Welcome ${props.authState.user.username}`: ""}
+                            </strong>
+                        </span>
                         <li className='nav-item'>
                             <button onClick={handleLog} className='nav-link btn btn-info btn-sm text-light'>Logout</button>
                         </li>
@@ -32,7 +38,6 @@ const Header = (props) => {
                             <Link to="/login" className='nav-link'>Login</Link>
                         </li>
                     </ul>}
-                    </div>
                 </div>
             </nav>
         </div>
