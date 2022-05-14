@@ -4,6 +4,7 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers'
 import PlansReducer from './reducers/PlansReducer'
 import AuthReducer from './reducers/AuthReducer'
+import TrackingReducer from './reducers/TrackingReducer'
 
 // const initialState = {}
 
@@ -12,7 +13,8 @@ const store = createStore(
     combineReducers({
         reducer: rootReducer,
         planState: PlansReducer,
-        authState: AuthReducer
+        authState: AuthReducer,
+        trackingState: TrackingReducer
     }),
     composeWithDevTools(applyMiddleware(thunk))
 )
