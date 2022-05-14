@@ -69,6 +69,7 @@ const Plans = (props) => {
                         <th>Type</th>
                         <th>Duration</th>
                         <th />
+                        <th />
                     </tr>
                 </thead>
                 <tbody>

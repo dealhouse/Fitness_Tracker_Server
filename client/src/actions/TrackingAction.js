@@ -81,7 +81,7 @@ export const AddTrack = (data) => {
     }
 }
 
-export const EditPlan = (id, data) => {
+export const EditTrack = (id, data) => {
     return async (dispatch, getState) => {
         try {
         const token = getState().authState.token;
