@@ -18,14 +18,12 @@ const Header = (props) => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
                     <a className="navbar-brand" href="#">Fitness Tracker</a>
+                    <strong>
+                                {props.authState.user ? `Welcome ${props.authState.user.username}`: ""}
+                            </strong>
                     </div>
                     {props.authState.isAuthenticated ? 
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className='nav-item'>
-                            <strong>
-                                {props.authState.user ? `Welcome ${props.authState.user.username}`: ""}
-                            </strong>
-                        </li>
                         <li className='nav-item'>
                             <Link to="/tracking" className='nav-link'>Tracking</Link>
                         </li>
