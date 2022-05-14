@@ -4,7 +4,8 @@ import React, {useState, useEffect}from 'react'
 const Tracking = () => {
     return (
         <div>
-            <h1>Hello</h1>
+            <h2>Measurement Tracking</h2>
+            
         </div>
     );
 }
