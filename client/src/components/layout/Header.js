@@ -21,11 +21,14 @@ const Header = (props) => {
                     </div>
                     {props.authState.isAuthenticated ? 
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <span className='navbar-text mr-3'>
+                        <li className='nav-item'>
                             <strong>
                                 {props.authState.user ? `Welcome ${props.authState.user.username}`: ""}
                             </strong>
-                        </span>
+                        </li>
+                        <li className='nav-item'>
+                            <Link to="/tracking" className='nav-link'>Tracking</Link>
+                        </li>
                         <li className='nav-item'>
                             <button onClick={handleLog} className='nav-link btn btn-info btn-sm text-light'>Logout</button>
                         </li>
