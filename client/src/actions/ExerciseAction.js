@@ -1,7 +1,7 @@
 import { GET_EXERCISES, DELETE_EXERCISE, CREATE_EXERCISE, EDIT_EXERCISE } from "./types";
 import { GetExercises, DeleteExercise, CreateExercise, UpdateExercise } from "../services/ExerciseService";
 
-export const PullTracks = () => {
+export const PullExercise = () => {
     return async (dispatch) => {
         try {
             const exercises = await GetExercises()
@@ -14,13 +14,13 @@ export const PullTracks = () => {
         }
     }
 }
-export const RemoveTracks = (id) => {
+export const RemoveExercise = (id) => {
     return async (dispatch) => {
         try {
         
             await DeleteExercise(id)
             dispatch({
-                type: DELETE_TRACKING,
+                type: DELETE_EXERCISE,
                 payload: id
             })
         } catch (error) {
@@ -29,12 +29,12 @@ export const RemoveTracks = (id) => {
     }
 }
 
-export const AddTrack = (data) => {
+export const AddExercise = (data) => {
     return async (dispatch) => {
         try {
             const exercise = await CreateExercise(data)
             dispatch({
-                type: CREATE_TRACKING,
+                type: CREATE_EXERCISE,
                 payload: exercise
             })
         } catch (error) {
@@ -43,12 +43,12 @@ export const AddTrack = (data) => {
     }
 }
 
-export const EditTrack = (id, data) => {
+export const EditExercise = (id, data) => {
     return async (dispatch) => {
         try {
-            const exercise = await UpdateTrack(id, data)
+            const exercise = await UpdateExercise(id, data)
             dispatch({
-                type: EDIT_TRACKING,
+                type: EDIT_EXERCISE,
                 payload: {...data, id: id}
             })
             return Promise.resolve(data)
