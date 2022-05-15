@@ -2,6 +2,7 @@ import React, {useState, useEffect}from 'react'
 import { connect } from "react-redux";
 import { PullExercise, RemoveExercise, EditExercise } from '../../actions/ExerciseAction';
 import { useParams } from 'react-router-dom';
+import ExerciseForm from './ExerciseForm';
 
 const mapStateToProps = ({ exerciseState }) => {
     return {exerciseState}
@@ -146,7 +147,7 @@ const Exercises = (props) => {
                             <label>Repetitions</label>
                             <input
                             className="form-control"
-                            type="text"
+                            type="number"
                             name="repetitions"
                             onChange={handleChange}
                             value={formValues.repetitions}
@@ -159,7 +160,7 @@ const Exercises = (props) => {
                             <label>Sets</label>
                             <input
                             className="form-control"
-                            type="text"
+                            type="number"
                             name="sets"
                             onChange={handleChange}
                             value={formValues.sets}
@@ -172,7 +173,7 @@ const Exercises = (props) => {
                             <label>Weight</label>
                             <input
                             className="form-control"
-                            type="text"
+                            type="number"
                             name="weight"
                             onChange={handleChange}
                             value={formValues.weight}
@@ -191,6 +192,7 @@ const Exercises = (props) => {
                 </tbody>
             </table>
                     </form>
+                    <ExerciseForm/>
         </div>
     );
 }
