@@ -38,6 +38,7 @@ const ExerciseForm = (props) => {
                 plan: parseInt(id)
             })
     }
+    
     return (
         <div>
         <form onSubmit={(e) => handleSubmit(e)}>

@@ -1,15 +1,17 @@
 import React, {useState, useEffect}from 'react'
 import { connect } from "react-redux";
 import { PullExercise, RemoveExercise, EditExercise } from '../../actions/ExerciseAction';
+import { PullPlans } from '../../actions/PlansAction';
 import { useParams } from 'react-router-dom';
 import ExerciseForm from './ExerciseForm';
 
-const mapStateToProps = ({ exerciseState }) => {
-    return {exerciseState}
+const mapStateToProps = ({ exerciseState, planState }) => {
+    return {exerciseState, planState}
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        fetchPlans: () => dispatch(PullPlans()),
         fetchExercise: () => dispatch(PullExercise()),
         removeExercise: (id) => dispatch(RemoveExercise(id)),
         updateExercise: (id, data) => dispatch(EditExercise(id, data))
@@ -18,7 +20,8 @@ const mapDispatchToProps = (dispatch) => {
 const Exercises = (props) => {
     let {id} = useParams()
     useEffect(() => {
-        props.fetchExercise()
+        props.fetchExercise(),
+        props.fetchPlans()
     }, [clicked])
     const [clicked, setClicked] = useState(0)
     const [updating, setUpdating] = useState()
@@ -69,8 +72,14 @@ const Exercises = (props) => {
         e.preventDefault()
         props.removeExercise(id)
     }
+
+    const currentPlan = props.planState.plans.filter(plan => 
+        parseInt(plan.id) === parseInt(id)
+    )
+    console.log(currentPlan)
     return (
         <div>
+            <h1>{currentPlan.length !== 0 && currentPlan[0].name}</h1>
             <h2>Exercises</h2>
             <form onSubmit={(e) => handleSubmit(e, updating)}>
             <table className='table table-striped'>
