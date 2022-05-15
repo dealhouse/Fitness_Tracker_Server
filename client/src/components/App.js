@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter as Router, Routes, Route, useParams } from 'react-router-dom'
 import Header from './layout/Header'
+import Footer from './layout/Footer'
 import Trackboard from './mains/Trackboard'
 import Dashboard from './mains/Dashboard';
 import Login from './auths/Login';
@@ -19,7 +20,7 @@ const App = () => {
     return (
         <Provider store={store}>
             <Router>
-                <div>
+                <div style={{height: '100vh', display: 'flex', flexDirection: 'column'}}>
                     <Header/>
                     <div className='container'>
                         <Routes>
@@ -36,6 +37,7 @@ const App = () => {
                             <Route path="/plan/:id" element={<Exercises/>}/>
                         </Routes>
                     </div>
+                    <Footer/>
                 </div>
             </Router>
         </Provider>
