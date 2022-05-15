@@ -29,9 +29,10 @@ const App = () => {
                                 }
                                 />
                             }/>
+                            <Route path="/tracking" element={<PrivateRoutes element={<Trackboard/>}/>}/>
                             <Route path="/register" element={<Register/>}/>
                             <Route path="/login" element={<Login/>}/>
-                            <Route path="/tracking" element={<Trackboard/>}/>
+                            <Route path="/plan/:id" element={<Exercises/>}/>
                         </Routes>
                     </div>
                 </div>
