@@ -5,6 +5,7 @@ import rootReducer from './reducers'
 import PlansReducer from './reducers/PlansReducer'
 import AuthReducer from './reducers/AuthReducer'
 import TrackingReducer from './reducers/TrackingReducer'
+import ExerciseReducer from './reducers/ExerciseReducer'
 
 // const initialState = {}
 
@@ -14,7 +15,8 @@ const store = createStore(
         reducer: rootReducer,
         planState: PlansReducer,
         authState: AuthReducer,
-        trackingState: TrackingReducer
+        trackingState: TrackingReducer,
+        exerciseState: ExerciseReducer
     }),
     composeWithDevTools(applyMiddleware(thunk))
 )
