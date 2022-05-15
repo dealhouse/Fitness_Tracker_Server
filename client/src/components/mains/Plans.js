@@ -1,6 +1,8 @@
 import React, {useState, useEffect}from 'react'
 import { connect } from 'react-redux'
 import { PullPlans, RemovePlans, EditPlan } from '../../actions/PlansAction';
+import { Link, useParams } from 'react-router-dom';
+
 
 
 const mapStateToProps = ({ planState }) => {
@@ -15,6 +17,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 const Plans = (props) => {
+    let {id} = useParams()
     useEffect(() => {
         props.fetchPlans()
     }, [clicked])
@@ -76,7 +79,7 @@ const Plans = (props) => {
                     {props.planState.plans.map((plan) => (
                         updating !== plan.id ?
                         <tr key={plan.id}>
-                            <td>{plan.id}</td>
+                            <td><Link to={`/plan/${parseInt(plan.id)}`}>{plan.id}</Link></td>
                             <td>{plan.name}</td>
                             <td>{plan.type}</td>
                             <td>{plan.duration}</td>

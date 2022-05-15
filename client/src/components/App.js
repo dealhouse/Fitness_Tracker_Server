@@ -7,6 +7,7 @@ import Dashboard from './mains/Dashboard';
 import Login from './auths/Login';
 import Register from './auths/Register';
 import PrivateRoutes from './auths/PrivateRoutes';
+import Exercises from './mains/Exercises'
 import {Provider} from 'react-redux'
 import { LoadUser } from '../actions/AuthAction';
 import store from '../store'
