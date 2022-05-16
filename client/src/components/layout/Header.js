@@ -9,7 +9,7 @@ const Header = (props) => {
         props.logout()
     }
     return (
-        <div style={{height: '50px'}}>
+        <div style={{minheight: '50px'}}>
             <nav className="navbar navbar-expand-sm navbar-dark bg-danger">
                 <div className="container-fluid">
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
