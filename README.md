@@ -24,6 +24,6 @@
 ### ***Future Updates***
 #### This application can be taken in many different direcitons. It can extend to include diet, be used as a component of a gym or personal trainer website, and it can add APIs for calorie counting in the future.
 ### ***Credits***
-#### [Traversy Media Django-React Project](https://www.youtube.com/playlist?list=PLillGF-RfqbbRA-CIUxlxkUpbq0IFkX60)
+#### [Traversy Media Django-React Project (Setup largely based on this playlist)](https://www.youtube.com/playlist?list=PLillGF-RfqbbRA-CIUxlxkUpbq0IFkX60)
 
-#### **This project is free to access. A trello board was used to track the development 
+#### **This project is free to access. A trello board was used to track the development.** 
